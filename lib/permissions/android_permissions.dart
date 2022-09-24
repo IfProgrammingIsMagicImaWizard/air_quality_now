@@ -55,4 +55,3 @@ Future<Setup> useGps(String token) async {
       latitude: locationData.latitude.toString(),
       longitude: locationData.longitude.toString());
 }
-

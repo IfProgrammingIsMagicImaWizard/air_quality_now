@@ -60,19 +60,14 @@ Function checkPermission(
     required BuildContext context}) {
   return () async {
     final navigator = Navigator.of(context);
-    if (await requestPermission(
-        context: context,
-        dialog: const StorageDialog(),
-        permission: Permission.storage)) {
-      showLoading(context);
-      dismissDisclaimer().then((_) => jsonLoadSettings().then((_) {
-            popLoading(context);
-            navigator.push(MaterialPageRoute(
-                builder: (context) => const CarouselWithIndicator(
-                      isFirstTime: true,
-                    )));
-          }));
-    }
+    showLoading(context);
+    dismissDisclaimer().then((_) => jsonLoadSettings().then((_) {
+          popLoading(context);
+          navigator.push(MaterialPageRoute(
+              builder: (context) => const CarouselWithIndicator(
+                    isFirstTime: true,
+                  )));
+        }));
   };
 }
 
